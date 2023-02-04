@@ -23,16 +23,16 @@ namespace Restaurant.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GettAllCustomer")]
-        public async Task<IActionResult> GettAllCustomer()
+        public async Task<List<GetCustomerDTO>> GettAllCustomer()
         {
             try
             {
                 var result = await _customerRepository.GetAll();
-                return Ok(result);
+                return(result);
             }
             catch(Exception ex)
             {
-                return BadRequest();
+                throw ex;
             }
            
         }
@@ -101,17 +101,17 @@ namespace Restaurant.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetById")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<GetCustomerDTO> GetById(int id)
         {
             try
             {
              var result =  await _customerRepository.GetById(id);
-                return Ok(result);
+                return(result);
                 
             }
             catch(Exception ex)
             {
-                return BadRequest(ex.Message);
+                throw ex;
             }
         }
     }
