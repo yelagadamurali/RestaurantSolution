@@ -14,7 +14,7 @@ namespace Models.DTO.CustomerDTO
         public PaymentType PaymentType { get; set; }
         public DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }
-       
-      
+
+        public List<FoodItem> FoodItems { get; set; }
     }
 }

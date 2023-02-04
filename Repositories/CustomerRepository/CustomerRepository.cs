@@ -81,7 +81,7 @@ namespace Repositories.CustomerRepository
         {
             try
             {
-                var result =await _context.Customers.Include(x => x.FoodItems).Where(x => x.IsActive && !x.IsDelete).Select(
+                var result = await _context.Customers.Include(x => x.FoodItems).Where(x => x.IsActive && !x.IsDelete).Select(
               x => new GetCustomerDTO
               {
                   PKCostomerId = x.PKCostomerId,
@@ -89,7 +89,8 @@ namespace Repositories.CustomerRepository
                   PhoneNumber = x.PhoneNumber,
                   PaymentType = x.PaymentType,
                   CreatedDate = x.CreatedDate,
-                  CreatedBy = x.CreatedBy
+                  CreatedBy = x.CreatedBy,
+                  FoodItems = x.FoodItems.ToList()
               }).ToListAsync();
                 return result;
             }
